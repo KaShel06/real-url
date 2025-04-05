@@ -131,7 +131,14 @@ class DouYu:
         real_url["x-p2p"] = "http://tx2play1.douyucdn.cn/live/{}.xs?uuid=".format(key)
         return real_url
 
+def get_real_url(rid):
+    try:
+        douyu = DouYu(rid)
+        return douyu.get_real_url()
+    except Exception as e:
+        print('Exception：', e)
+        return False
+
 if __name__ == '__main__':
     r = input('输入斗鱼直播间号：\n')
-    s = DouYu(r)
-    print(s.get_real_url())
+    print(get_real_url(r))
